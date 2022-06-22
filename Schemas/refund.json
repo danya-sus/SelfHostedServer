@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "JSON Schema for my JSON file format",
+
+  "type": "object",
+
+  "properties": {
+    "operation_type": { "type": "string" },
+    "operation_time": { "type": "string" },
+    "operation_place": { "type": "string" },
+    "ticket_number": { "type": "string" }
+  },
+  "required": [
+    "operation_type",
+    "operation_time",
+    "operation_place",
+    "ticket_number"
+  ]
+}

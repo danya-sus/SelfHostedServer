@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "JSON Schema for my JSON file format",
+
+  "type": "object",
+
+  "properties": {
+    "operation_type": { "type": "string" },
+    "operation_time": { "type": "string" },
+    "operation_place": { "type": "string" },
+    "passenger": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "surname": { "type": "string" },
+        "patronymic": { "type": "string" },
+        "doc_type": { "type": "string" },
+        "doc_number": { "type": "string" },
+        "birthdate": { "type": "string" },
+        "gender": { "type": "string" },
+        "passenger_type": { "type": "string" },
+        "ticket_number": { "type": "string" },
+        "ticket_type": { "type": "integer" }
+      },
+      "required": [
+        "name",
+        "surname",
+        "patronymic",
+        "doc_type",
+        "doc_number",
+        "birthdate",
+        "gender",
+        "passenger_type",
+        "ticket_number",
+        "ticket_type"
+      ]
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "airline_code": { "type": "string" },
+          "flight_num": { "type": "integer" },
+          "depart_place": { "type": "string" },
+          "depart_datetime": { "type": "string" },
+          "arrive_place": { "type": "string" },
+          "arrive_datetime": { "type": "string" },
+          "pnr_id": { "type": "string" }
+        },
+        "required": [
+          "airline_code",
+          "flight_num",
+          "depart_place",
+          "depart_datetime",
+          "arrive_place",
+          "arrive_datetime",
+          "pnr_id"
+        ]
+      }
+    }
+  },
+  "required": [
+    "operation_type",
+    "operation_time",
+    "operation_place",
+    "passenger"
+  ]
+}
