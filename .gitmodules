@@ -1,0 +1,3 @@
+[submodule "SelfHostedServer.Data"]
+	path = SelfHostedServer.Data
+	url = https://github.com/danya-sus/SelfHostedServer.Data
