@@ -7,3 +7,6 @@
 [submodule "SelfHostedServer.Models"]
 	path = SelfHostedServer.Models
 	url = https://github.com/danya-sus/SelfHostedServer.Models
+[submodule "SelfHostedServer.ModelsDto"]
+	path = SelfHostedServer.ModelsDto
+	url = https://github.com/danya-sus/SelfHostedServer.ModelsDto
