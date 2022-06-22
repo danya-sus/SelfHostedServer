@@ -1,3 +1,6 @@
 [submodule "SelfHostedServer.Data"]
 	path = SelfHostedServer.Data
 	url = https://github.com/danya-sus/SelfHostedServer.Data
+[submodule "SelfHostedServer.Services"]
+	path = SelfHostedServer.Services
+	url = https://github.com/danya-sus/SelfHostedServer.Services
