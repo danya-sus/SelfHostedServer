@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace SelfHostedServer.Controllers
 {
     [ApiController]
-    [Route("api/v{version:apiVersion}/{controller}")]
+    [Route("api/v{version:apiVersion}/{controller}/{action}")]
     [ApiVersion("2.0")]
     public class ProcessController : ControllerBase
     {
@@ -21,7 +21,6 @@ namespace SelfHostedServer.Controllers
         }
 
         [HttpPost]
-        [Route("{action}")]
         public async Task<IActionResult> Sale([FromBody] SaleDto dto)
         {
             var sale = Mapper.Map<Ticket>(dto);
@@ -32,7 +31,6 @@ namespace SelfHostedServer.Controllers
         }
 
         [HttpPost]
-        [Route("{action}")]
         public async Task<IActionResult> Refund([FromBody] RefundDto dto)
         {
             var refund = Mapper.Map<Refund>(dto);
