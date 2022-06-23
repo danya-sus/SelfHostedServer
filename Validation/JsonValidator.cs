@@ -18,8 +18,7 @@ namespace SelfHostedServer.Validation
             }
             var schema = JSchema.Parse(stringSchema);
 
-            if (JObject.Parse(json).IsValid(schema)) return true;
-            return false;
+            return JObject.Parse(json).IsValid(schema);
         }
     }
 }
