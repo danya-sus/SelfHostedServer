@@ -13,19 +13,15 @@ namespace SelfHostedServer.Controllers
     public class ProcessController : ControllerBase
     {
         private readonly IProcessService Service;
-        private readonly IMapper Mapper;
-        public ProcessController(IProcessService service, IMapper mapper)
+        public ProcessController(IProcessService service)
         {
             this.Service = service;
-            this.Mapper = mapper;
         }
 
         [HttpPost]
         public async Task<IActionResult> Sale([FromBody] SaleDto dto)
         {
-            var sale = Mapper.Map<Ticket>(dto);
-
-            await Service.SaleAsync(sale);
+            await Service.SaleAsync(dto);
 
             return Ok();
         }
@@ -33,9 +29,7 @@ namespace SelfHostedServer.Controllers
         [HttpPost]
         public async Task<IActionResult> Refund([FromBody] RefundDto dto)
         {
-            var refund = Mapper.Map<Refund>(dto);
-
-            await Service.RefundAsync(refund);
+            await Service.RefundAsync(dto);
 
             return Ok();
         }
