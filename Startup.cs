@@ -64,6 +64,7 @@ namespace SelfHostedServer
 
             app.UseRouting();
 
+            app.UseErrorHandler();
             app.UseSizeLimit();
             app.UseValidation();
 
