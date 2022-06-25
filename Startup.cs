@@ -10,6 +10,7 @@ using SelfHostedServer.Middleware;
 using SelfHostedServer.ModelsDTO.ModelsDto.AutoMapperProfiles;
 using SelfHostedServer.Services;
 using SelfHostedServer.Validation;
+using SelfHostedServer.Validation.NamingPolicy;
 using System.Linq;
 
 namespace SelfHostedServer
@@ -25,7 +26,8 @@ namespace SelfHostedServer
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = SnakeCaseNamingPolicy.Instance);
 
             services.AddApiVersioning();
             services.AddRouting(options => options.LowercaseUrls = true);
