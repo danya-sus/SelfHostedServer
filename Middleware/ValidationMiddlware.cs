@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Schema;
 using SelfHostedServer.Validation;
 using System;
@@ -18,7 +19,7 @@ namespace SelfHostedServer.Middleware
             _next = next;
         }
 
-        public async Task InvokeAsync(HttpContext httpContext, IJsonValidator validator)
+        public async Task InvokeAsync(HttpContext httpContext, IJsonValidator validator, IConfiguration configuration)
         {
             if (!httpContext.Request.HasJsonContentType())
             {
@@ -32,6 +33,7 @@ namespace SelfHostedServer.Middleware
             request.Body.Seek(0, SeekOrigin.Begin);
 
             var schema = request.Path.ToString().Replace("/", " ").Trim().Split(" ");
+            var route = configuration.GetSection("JsonSchemas")["Route"];
 
             var json = "";
             using (var reader = new StreamReader(request.Body, Encoding.UTF8, false, 2048, true))
@@ -41,7 +43,7 @@ namespace SelfHostedServer.Middleware
             }
             request.Body.Seek(0, SeekOrigin.Begin);
 
-            if (!validator.IsValid(json, schema[schema.Length - 1]))
+            if (!validator.IsValid(json, $"{route}/{schema[schema.Length - 1]}.json"))
             {
                 throw new JSchemaValidationException("JSON is not valid");
             }
