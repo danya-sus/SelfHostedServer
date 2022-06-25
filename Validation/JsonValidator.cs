@@ -12,7 +12,7 @@ namespace SelfHostedServer.Validation
         public bool IsValid(string json, string address)
         {
             var stringSchema = "";
-            using (StreamReader r = new StreamReader($"C:/Users/danya/source/repos/SelfHostedServer/Schemas/{address}.json"))
+            using (StreamReader r = new StreamReader(address))
             {
                 stringSchema = r.ReadToEnd();
             }
